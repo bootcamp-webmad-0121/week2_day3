@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        const drinks = ['agua', 'kas']
+
+        console.log('Este es el prototype de un array:', drinks)
+
+        // Extensión del objeto
+        drinks.sayBye = function () {
+            alert("HASTA PRONTO!")
+        }
+
+        // Extensión del prototipo
+        drinks.__proto__.sayHi = function () {
+            alert('HOLA AMIGOS! El primer elemento es ' + this[0])
+        }
+
+        // Extensión del prototipo
+        Array.prototype.yay = function () {
+            alert('wowwwww')
+        }
+
+        // OPS!
+        Array.prototype.push = function (val) {
+            alert(`Este valor nunca llegará a meterse en el array mwahahha: ${val}`)
+            alert(`Y encima voy y te quito el: ${this[this.length - 1]}, ¡PRINGAO!`)
+            this.pop()
+        }
+
+        drinks.push('Cacaolat')
+
+
+
+
+
+        class Person {
+            constructor(name) {
+                this.name = name
+            }
+
+            sayHi() {
+                alert('¡HOLA, ' + this.name + '!')
+            }
+
+            sayBye() {
+                alert('ADIOS, ' + this.name + '!')
+            }
+        }
+
+
+
+        const me = new Person('Popino')
+        const you = new Person('German')
+
+        console.log(me)
+        console.log(you)
+
+
+
+
+
+
+        const she = { name: 'Vero', lastName: 'Yaya' }
+
+        Object.prototype.getTotalKeys = function () {
+            alert('Este objeto tiene ' + Object.keys(this).length + ' propiedades')
+        }
+
+        she.getTotalKeys()
+
+
+
+
+
+        console.log(window)
+
+    </script>
+</body>
+
+</html>

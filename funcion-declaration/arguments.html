@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        // function showMovieDetails() {
+
+        //     console.log('Los argumentos de la función son:', arguments)
+
+        //     console.log(`La peli se llama ${arguments[0]}`)
+        //     console.log(`Dirigida por ${arguments[1]}`)
+
+        //     // No tiene .forEach()
+        //     const iterableArguments = [...arguments]
+        //     iterableArguments.forEach(elm => console.log(elm))
+        // }
+
+
+
+        // REST parameters
+        function showMovieDetails(title, director, ...cast) {
+
+            console.log('La peli se llamna', title)
+            console.log('Dirigida por', director)
+            console.log('Reparto')
+            cast.forEach(elm => console.log('Actor/a', elm))
+        }
+
+
+        showMovieDetails('Titanic', 'Chiquito de la Calzada', 'DiCaprio', 'Rose', 'La señora mayor')
+
+
+    </script>
+</body>
+
+</html>

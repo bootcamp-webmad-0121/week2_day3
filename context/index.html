@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        // Global context: window
+        console.log('El contexto global es window', this)
+
+
+
+        // Function context: window
+        function whatever() {
+            console.log('El contexto de función es window', this)
+        }
+        whatever()
+
+
+        // Method context: current object
+        const person = {
+            name: 'German',
+            weight: 33,
+            sayYourName() {
+                console.log('Mi nombre es', this.name)
+            },
+            walk1() {                // OPS! El contexto de una función es window
+                setInterval(function () {
+                    this.weight -= .1
+                    console.log('La persona ahora pesa', this.weight)
+                }, 1000)
+            },
+            walk2() {                // OPS! El guarrómetro ha estallado
+                const that = this
+                setInterval(function () {
+                    that.weight -= .1
+                    console.log('La persona ahora pesa', that.weight)
+                }, 1000)
+            },
+            walk3() {
+                setInterval(function () {       // GREAT! .bind() reorienta el contexto de una función con el objeto argumnetado
+                    this.weight -= .1
+                    console.log('La persona ahora pesa', this.weight)
+                }.bind(this), 1000)
+            },
+            walk4() {                 // GREAT! Las arrow funcion no reoirientan el contexto
+                setInterval(() => {
+                    this.weight -= .1
+                    console.log('La persona ahora pesa', this.weight)
+                }, 1000)
+            }
+        }
+
+        person.sayYourName()
+        // person.walk1()
+        // person.walk2()
+        // person.walk3()
+        person.walk4()
+
+
+
+
+    </script>
+
+</body>
+
+</html>

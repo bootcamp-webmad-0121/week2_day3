@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>Click me</button>
+    <script>
+
+
+        // Functions as values
+        function sayHi1() {
+            console.log('hi!')
+        }
+
+        setTimeout(sayHi1, 4000)
+
+
+
+
+
+        // Functions as values
+        document.querySelector('button').onclick = sayHi1
+
+
+
+
+
+        function whatever(action) {
+            action()
+        }
+
+        // Functions as variables
+        whatever(sayHi1)
+
+
+
+
+
+
+        // Anonymous function
+        document.querySelector('button').onclick = function () {
+            console.log('Es una fn anonima')
+        }
+
+    </script>
+</body>
+
+</html>
